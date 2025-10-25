@@ -22,6 +22,10 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  margin-right: 50px;
+}
+
 
 .form-container {
   display: flex;
@@ -34,7 +38,6 @@ body {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   width: 100%;
   max-width: 480px;
-  margin-right: 8%;
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
