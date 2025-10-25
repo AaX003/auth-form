@@ -6,30 +6,33 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // success message
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = () => {
-    if (!email.trim() || !password.trim()) {
-      alert("Please create an email and password.");
-      return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (email.trim() || password.trim()) {
+      setSuccess("Successful!");
     }
-    if (password.trim().length < 8) {
-      alert("Your password should be atleast 8 characters long.");
-      return;
-    } 
-    alert("Signed up successfully!");
-    setEmail("");
-    setPassword("");
+
   }
 
-  
 
   return (
     <div className="container">
       <section className="form-container">
-        <form className="form" >
+        <form className="form" onSubmit={handleSubmit}>
           <header className="form-header">
             <h3 className="header">Create your account</h3>
           </header>
+
+          {success && (
+              <div className="msg-wrapper">
+                <p className="success-msg">{success}</p>
+              </div>
+            )}
+
           <label 
             htmlFor="email" 
             className="email-label">Email</label>
@@ -52,14 +55,15 @@ function Signup() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Create a Password"
               required
+              minLength={8}
             />
-            <span className="msg-wrapper">
+            <span className="link-wrapper">
               <p className="msg">
                 Have an account? <a href="/" className="link">Login</a> here
               </p>
             </span>
+            <button className="submit-btn" type="submit">Sign Up</button>
         </form>
-        <button className="submit-btn" type="submit" onClick={handleSubmit}>Sign Up</button>
       </section>
     </div>
   );

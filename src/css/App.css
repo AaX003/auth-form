@@ -7,6 +7,10 @@
   --text-dark: #1a1a1a;
   --text-light: #777;
   --radius: 14px;
+
+  /* input border + msg colors */
+  --error: #ff1f1f;
+  --success: #3ac03a;
 }
 
 body {
@@ -18,20 +22,19 @@ body {
   min-height: 100vh;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 
 .form-container {
+  display: flex;
+  justify-content: center;
+  place-self: center;
+  align-items: center;
   background: var(--surface);
   padding: 2.5rem 2rem;
   border-radius: var(--radius);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 380px;
+  max-width: 480px;
+  margin-right: 8%;
   text-align: center;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -88,7 +91,7 @@ input:focus {
   outline: none;
 }
 
-.msg-wrapper {
+.link-wrapper {
   margin-top: 0.5rem;
 }
 
@@ -129,6 +132,31 @@ input:focus {
   transform: translateY(1px);
 }
 
+.msg-wrapper {
+  display: flex; flex-direction: column; justify-content: center;
+  place-self: center; margin-right: 8%; margin-bottom: 0.2rem;
+}
+
+.success-msg {
+  text-align: center;
+  color: var(--success);
+  font-weight: 500;
+  background: rgba(55, 220, 55, 0.212);
+  width: 100%;
+  padding: .55rem;
+  border-radius: 10px;
+}
+
+input:invalid:required {
+  border: 1px solid var(--error);
+}
+input:valid:required {
+  border: 1px solid var(--success); 
+}
+
+input:empty {
+  border: 1px solid #e0e0e0;
+}
 
 /* Mobile tweaks */
 @media (max-width: 480px) {

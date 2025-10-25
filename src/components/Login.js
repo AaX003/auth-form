@@ -1,35 +1,38 @@
 import '../css/App.css';
 
-import { useState } from "react";
+import { useState} from "react";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // success message
+  const [success, setSuccess] = useState("");
 
-  const handleSubmit = () => {
-    if (!email.trim() || !password.trim()) {
-      alert("Please enter your email and password.");
-      return;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (email.trim() || password.trim()) {
+      setSuccess("Successful!");
     }
-    if (password.trim().length < 8) {
-      alert("Password should be atleast 8 characters long.");
-      return;
-    } 
-    alert("Logged in successfully!");
-    setEmail("");
-    setPassword("");
+
   }
 
-  
 
   return (
     <div className="container">
       <section className="form-container">
-        <form className="form" >
+        <form className="form" onSubmit={handleSubmit}>
           <header className="form-header">
             <h3 className="header">Log into your account</h3>
           </header>
+
+          {success && (
+              <div className="msg-wrapper">
+                <p className="success-msg">{success}</p>
+              </div>
+            )}
+            
           <label 
             htmlFor="email" 
             className="email-label">Email</label>
@@ -52,14 +55,15 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your Password"
               required
+              minLength={8}
             />
-            <span className="msg-wrapper">
+            <span className="link-wrapper">
               <p className="msg">
-                Need an account? <a href="/signup" className="link">Register</a> here
+                Need an account? <a href="/" className="link">Sign up</a> here
               </p>
             </span>
+            <button className="submit-btn" type="submit">Log In</button>
         </form>
-        <button className="submit-btn" type="submit" onClick={handleSubmit}>Login</button>
       </section>
     </div>
   );
