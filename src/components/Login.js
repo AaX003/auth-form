@@ -59,7 +59,7 @@ function Login() {
             />
             <span className="link-wrapper">
               <p className="msg">
-                Need an account? <Link to="/signup" className="link">Sign Up</Link> here
+                Need an account? <Link to="/signup" className="link">Register</Link> here
               </p>
             </span>
             <button className="submit-btn" type="submit">Log In</button>
